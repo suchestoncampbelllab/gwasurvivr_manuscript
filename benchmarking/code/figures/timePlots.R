@@ -1,6 +1,6 @@
 library(tidyverse)
 options("width"=100)
-setwd("/projects/rpci/lsuchest/abbasriz/survivr_benchmark/output/full_results")
+setwd("~/Google Drive/OSU_PHD/benchmark_survivr/")
 
 options(scipen=1000000)
 gwastools <- map(dir("./timeData/", pattern="gwastools", full.names = TRUE), read_tsv) %>%
@@ -38,7 +38,7 @@ full %>%
     geom_line() +
     facet_grid(~p_snp, scales="free_y") +
     scale_y_log10() +
-    labs(y=expression(paste("log"[10], plain(minutes))), x="Sample Sizes") +
+    labs(y=expression(paste("-log"[10], plain(minutes))), x="Sample Sizes") +
     ggtitle("Runtime for Survival Analysis")
     
 

@@ -1,6 +1,6 @@
 ## pulling all results
 library(tidyverse)
-setwd("/projects/rpci/lsuchest/abbasriz/survivr_benchmark/output/full_results")
+setwd("~/Google Drive/OSU_PHD/benchmark_survivr/full_results/")
 
 sr_raw <- read_tsv("gwasurvivr_all_reps.txt")
 
@@ -120,7 +120,7 @@ sim_df_sp %>%
     ggplot(aes(x=gwasurvivr, y=value, color=analysis)) +
     geom_point(alpha=0.5) +
     # coord_cartesian(xlim = c(-3,3), ylim = c(-3,3))+
-    facet_grid(analysis~sims, scales="free") +
+    facet_grid(analysis~sims, scales="free_x") +
     ggtitle("Software Coefficients") + 
     labs(x="gwasurvivr coefficient estimates", y="other software cofficient estimates")
 
