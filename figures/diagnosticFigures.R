@@ -15,7 +15,7 @@ sr %>%
 genipe_raw <- read_tsv("genipe_all_reps.txt")
 
 genipe <- genipe_raw %>%
-    rename(TYPED=chr,
+    dplyr::rename(TYPED=chr,
            POS=pos,
            RSID=snp,
            COEF=coef,
@@ -40,7 +40,7 @@ genipe %>%
 gwastools_raw <- read_tsv("gwastools_all_reps.txt")
 
 gwastools <- gwastools_raw %>%
-    rename(RSID=snpID,
+    dplyr::rename(RSID=snpID,
            CHR=chr,
            COEF=Est,
            SE.COEF=SE,
@@ -58,7 +58,7 @@ gwastools %>%
 
 sv_raw <- read_tsv("sv_all_reps.txt")
 sv <- sv_raw %>%
-    rename(TYPED=InputName,
+    dplyr::rename(TYPED=InputName,
            RSID=rsid,
            CHR=Chr,
            POS=Pos,
@@ -86,7 +86,7 @@ data <- data %>%
     group_by(analysis, sims, RSID) %>%
     summarize_at(.vars=c("MAF", "COEF", "PVALUE"),
                  funs(mean=mean(., na.rm=TRUE))) %>%
-    rename(MAF=MAF_mean,
+    dplyr::rename(MAF=MAF_mean,
            COEF=COEF_mean,
            PVALUE=PVALUE_mean)
 
@@ -97,12 +97,23 @@ sim_df_sp <- data %>%
     gather(key="stats","value",MAF:PVALUE) %>% 
     unite(grp, -value, remove = FALSE) %>%
     filter(!duplicated(grp)) %>%
-    select(-grp) %>%
+    dplyr::select(-grp) %>%
     spread(analysis, value) %>%
     na.omit() 
 
 sim_df_sp$sims <- as.factor(sim_df_sp$sims)
-sim_df_sp$sims <- sim_df_sp$sims %>% fct_relevel("100_1000", "100_10000", "100_100000")
+sim_df_sp$sims <- sim_df_sp$sims %>%
+    fct_relevel("100_1000", "100_10000", "100_100000")
+sim_df_sp$sims <- sim_df_sp$sims %>%
+    recode("100_1000"="n=100, p=1000",
+           "100_10000"="n=100, p=10000",
+           "100_100000"="n=100, p=100000",
+           "1000_1000"="n=1000, p=1000",
+           "1000_10000"="n=1000, p=10000",
+           "1000_100000"="n=1000, p=100000",
+           "5000_1000"="n=5000, p=1000",
+           "5000_10000"="n=5000, p=10000",
+           "5000_100000"="n=5000, p=100000")
 
 
 
@@ -113,34 +124,57 @@ sim_df_sp %>%
 
 #### coef ####
 
-sim_df_sp %>%
+coef <- sim_df_sp %>%
     filter(stats=="COEF") %>%
     gather(key = "analysis", "value", c(genipe, gwastools, survivalgwasSV)) %>% 
     filter(value > -3, value < 3) %>%
     ggplot(aes(x=gwasurvivr, y=value, color=analysis)) +
-    geom_point(alpha=0.5) +
-    # coord_cartesian(xlim = c(-3,3), ylim = c(-3,3))+
-    facet_grid(analysis~sims, scales="free_x") +
-    ggtitle("Software Coefficients") + 
-    labs(x="gwasurvivr coefficient estimates", y="other software cofficient estimates")
-
-
-sim_df_sp %>%
+    geom_point() +
+    facet_wrap(~sims, scales="free") +
+    ggtitle("Coefficients") + 
+    labs(x="gwasurvivr coefficient estimates", y="other software cofficient estimates") +
+    theme_bw() +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    scale_color_npg()
+    
+pval <- sim_df_sp %>%
     filter(stats=="PVALUE") %>%
     gather(key = "analysis", "value", c(genipe, gwastools, survivalgwasSV)) %>% 
     ggplot(aes(x=gwasurvivr, y=value, color=analysis)) +
-    geom_point(alpha=0.5) +
+    geom_point() +
     facet_wrap(~sims, scales="free") +
-    ggtitle("Correlation of Other Survival Packages P-values Against gwasurvivr") +
-    labs(x="gwasurvivr P-values", y="Other software P-values")
+    ggtitle("P-values") +
+    labs(x="gwasurvivr P-values", y="Other software P-values") +
+    theme_bw() +
+    theme(plot.title = element_text(hjust = 0.5), legend.position="none") +
+    scale_color_npg() 
 
-sim_df_sp %>%
+maf <- sim_df_sp %>%
     filter(stats=="MAF") %>%
     gather(key = "analysis", "value", c(genipe, gwastools, survivalgwasSV)) %>% 
     ggplot(aes(x=gwasurvivr, y=value, color=analysis)) +
-    geom_point(alpha=0.5) +
+    geom_point() +
+    theme(plot.title = element_text(hjust = 0.5), legend.position="none") +
     facet_wrap(~sims, scales="free") +
-    ggtitle("Correlation of Other Survival Packages MAFs Against gwasurvivr") +
-    labs(x="gwasurvivr MAFs", "Other package MAF")
+    ggtitle("Minor Allele Frequency (MAF)") +
+    labs(x="gwasurvivr MAFs", y="Other software MAF") +
+    theme_bw() +
+    theme(plot.title = element_text(hjust = 0.5), legend.position="none") +
+    scale_color_npg() 
+maf
 
 
+library(patchwork)
+library(ggsci)
+# time + {
+#     coef + {
+#         pval + 
+#             maf +
+#             plot_layout(ncol=1) 
+#     } 
+# } +
+#     plot_layout(ncol=1)
+
+
+time /
+    (maf | pval | coef)
