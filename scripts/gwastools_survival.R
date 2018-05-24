@@ -3,19 +3,6 @@ library(batch)
 
 parseCommandArgs(evaluate=TRUE)
 
-# chunk.impute <- "/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/genotype/n100_snps1k_chr21.25000005-25500000.impute" 
-# chunk.sample <- "/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/sample/n100_chr21.25000005-25500000.impute.sample" 
-# chr <- 21 
-# gds.output <- "/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/gdsfiles/n100_p1000_chr21.25000005-25500000"
-# gdsfile <- "/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/gdsfiles/n100_p1000_chr21.25000005-25500000.gds"
-# scanfile <- "/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/gdsfiles/n100_p1000_chr21.25000005-25500000.scan.rdata"
-# snpfile <- "/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/gdsfiles/n100_p1000_chr21.25000005-25500000.snp.rdata"
-# snpstart <- 1 
-# snpstop <- 100 
-# gwastools.result <- "/projects/rpci/lsuchest/abbasriz/survivr_benchmark/output/gwastools/n100_p1000.impute.gwastools"
-
-
-
 GT_surv <- function(chunk.impute, chunk.sample, chr, gds.output, gdsfile, scanfile, snpfile, snpstart, snpstop, gwastools.result){
         convertImputeGds <- function(chunk.impute, chunk.sample, chr, gds.output){
                 gds <- paste0(gds.output, ".gds")
@@ -47,7 +34,7 @@ GT_surv <- function(chunk.impute, chunk.sample, chr, gds.output, gdsfile, scanfi
         res <- assocCoxPH(genoData,
                           event="event",
                           time.to.event="time",
-                          covar=c("sex.sample", "age", "bmiOVWT"),
+                          covar=c("sex.sample", "age", "DrugTxYes"),
                           snpStart=snpstart, 
                           snpEnd=snpstop)
         
