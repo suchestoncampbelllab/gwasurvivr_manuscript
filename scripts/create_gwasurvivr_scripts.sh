@@ -1,5 +1,5 @@
-dir="/projects/rpci/lsuchest/abbasriz/survivr_benchmark/scripts/sr_impute";
-output_dir="/projects/rpci/lsuchest/abbasriz/survivr_benchmark/output";
+dir="/data/scripts/sr_impute";
+output_dir="output";
 for m in `seq 1 3`;
 do
 	for j in 100 1000 5000;
@@ -11,15 +11,15 @@ do
 
 if [ $k == 1000 ]
 then 
-	mem=4000;
+	mem=24000;
 	walltime=`expr 12:00:00`;
 elif [ $k == 10000 ] 
 then
-	mem=8000;
+	mem=24000;
 	walltime=`expr 20:00:00`;
 elif [ $k == 100000 ]
 then
-	mem=16000;
+	mem=24000;
 	walltime=`expr 24:00:00`;
 fi 
 
@@ -29,7 +29,7 @@ cat <<EOM > ${file}
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
 #SBATCH --mem-per-cpu=${mem}
-#SBATCH --mail-user=rizvi.33@osu.edu
+#SBATCH --mail-user=user.name@university.edu
 #SBATCH --mail-type=FAIL
 #SBATCH --partition=general-compute
 #SBATCH --job-name=gwasurvivr_n${j}_p${k}_rep${m}
@@ -40,8 +40,8 @@ cat <<EOM > ${file}
 tstart=\$(date +%s)
 echo "###### start time:"\$tstart
 
-DIRECTORY=/projects/rpci/lsuchest/abbasriz/survivr_benchmark
-SCRIPT=/projects/rpci/lsuchest/abbasriz/survivr_benchmark/scripts
+DIRECTORY=/data
+SCRIPT=scripts
 
 ########
 
@@ -79,7 +79,7 @@ exit
 EOM
 
 echo -e "\tsub file: ${file}\n" ;
-sbatch ${file} --constraint=CPU-L5630 --exclusive;
+sbatch ${file} --constraint=CPU-L5520 --exclusive;
 					 
 		done
 	done
