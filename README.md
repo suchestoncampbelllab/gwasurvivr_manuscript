@@ -9,7 +9,7 @@ To reproduce the results please clone the repo.
 Abstract
 ========
 
-To address the limited software options for performing survival analyses with millions of SNPs, we developed gwasurvivr, an R/Bioconductor package with a simple interface for conducting fast genome wide survival analyses using VCF (outputted from Michigan or Sanger imputation servers) and IMPUTE2 files. We benchmarked gwasurvivr with other GWAS software capable of conducting genome wide survival analysis (genipe, SurvivalGWAS\_SV, and GWASTools) and demonstrate improved scalability including shorter runtimes for large sample sizes and larger number of SNPs.
+To address the limited software options for performing survival analyses with millions of SNPs, we developed `gwasurvivr`, an R/Bioconductor package with a simple interface for conducting fast genome wide survival analyses using VCF (outputted from Michigan or Sanger imputation servers) and IMPUTE2 files. We benchmarked gwasurvivr with other GWAS software capable of conducting genome wide survival analysis (`genipe`, `SurvivalGWAS_SV`, and `GWASTools`) and demonstrate improved scalability including shorter runtimes for large sample sizes and larger number of SNPs.
 
 <!-- # Repo Structure -->
 <!-- - `code` : Scripts used for software comparisons and to generate figures used in the manuscript.       -->
@@ -31,7 +31,7 @@ To address the limited software options for performing survival analyses with mi
 Repo Structure
 ==============
 
-**`code` **: Scripts used for software comparisons and to generate figures used in the manuscript.
+**`code`**: Scripts used for software comparisons and to generate figures used in the manuscript.
 
 -   `code/create_*_scripts.sh`: Scripts used to generate shell scripts that submit jobs on a computing cluster for each software.
 -   `code/diagnosticFigures.R`: R code to generate the diagnostic figures
