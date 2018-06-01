@@ -2,7 +2,8 @@
 Introduction
 ============
 
-Code and data provided here are for gwasurvivr: an R package for genome wide survival analysis manuscript. 
+Code and data provided here are for reproducing data used to generate and create Figure 1 and Supplementary Figures 1-3 in  gwasurvivr: an R package for genome wide survival analysis manuscript.
+
 
 The preprint is available on bioRxiv (https://www.biorxiv.org/content/early/2018/05/18/326033).
 
