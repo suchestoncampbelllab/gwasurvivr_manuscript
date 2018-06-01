@@ -39,7 +39,7 @@ cat <<EOM > ${file}
 tstart=\$(date +%s)
 echo "###### start time:"\`date\`
 DIRECTORY=/data
-SCRIPT=/data/scripts
+SCRIPT=/code
 ############################
 module load R
 R --file=\$SCRIPT/gwastools_survival.R -q --args \\
