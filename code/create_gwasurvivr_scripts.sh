@@ -1,4 +1,4 @@
-dir="/data/scripts/sr_impute";
+dir="/data/scripts/gwasurvivr_impute";
 output_dir="output";
 for m in `seq 1 3`;
 do
@@ -41,7 +41,7 @@ tstart=\$(date +%s)
 echo "###### start time:"\$tstart
 
 DIRECTORY=/data
-SCRIPT=scripts
+SCRIPT=/code
 
 ########
 
