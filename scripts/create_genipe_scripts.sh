@@ -1,5 +1,5 @@
-dir="/projects/rpci/lsuchest/abbasriz/survivr_benchmark/scripts/genipe_impute";
-output_dir="/projects/rpci/lsuchest/abbasriz/survivr_benchmark/output";
+dir="/data/scripts/genipe_impute";
+output_dir="/data/output";
 for m in `seq 1 3`;
 do
 	for j in 100 1000 5000;
@@ -11,15 +11,15 @@ do
 
 if [ $k == 1000 ]
 then 
-	mem=4000;
+	mem=24000;
 	walltime=`expr 24:00:00`;
 elif [ $k == 10000 ] 
 then
-	mem=8000;
+	mem=24000;
 	walltime=`expr 48:00:00`;
 elif [ $k == 100000 ]
 then
-	mem=16000;
+	mem=24000;
 	walltime=`expr 72:00:00`;
 fi 
 
@@ -29,25 +29,20 @@ cat <<EOM > ${file}
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
 #SBATCH --mem=${mem}
-#SBATCH --mail-user=rizvi.33@osu.edu
+#SBATCH --mail-user=user.name@university.edu
 #SBATCH --mail-type=FAIL
 #SBATCH --partition=general-compute
 #SBATCH --job-name=genipe_n${j}_p${k}_rep${m}
 #SBATCH --output=${output_dir}/genipe/results2/log/genipe_n${j}_p${k}_rep${m}_%j.out
 #SBATCH --error=${output_dir}/genipe/results2/log/genipe_n${j}_p${k}_rep${m}_%j.err
-
 #Get date and time
 tstart=\$(date +%s)
 echo "###### start time:"\`date\`
-
 #####################
-
 module load python/anaconda2-4.2.0
 module load genipe/1.3.1
 source activate py34-genipe
-
-DIRECTORY=/projects/rpci/lsuchest/abbasriz/survivr_benchmark
-
+DIRECTORY=/data/
 imputed-stats cox \\
     --impute2 \$DIRECTORY/input/impute/genotype/n${j}_p${k}_chr18.impute \\
     --sample \$DIRECTORY/input/impute/sample/n${j}.impute_sample \\
@@ -62,28 +57,20 @@ imputed-stats cox \\
     --sample-column ID_2 \\
     --time-to-event time \\
     --event event
-
 #####################
-
 echo "All Done!"
-
 echo "*************************************************"
-
 echo "SLURM_JOB_ID"=\$SLURM_JOB_ID
 echo "SLURM_JOB_NODELIST"=\$SLURM_JOB_NODELIST
 echo "SLURM_NNODES"=\$SLURM_NNODES
 echo "SLURM_NTASKS"=\$SLURM_NTASKS
 echo "SLURMTMPDIR"=\$SLURMTMPDIR
 echo "working directory"=\$SLURM_SUBMIT_DIR
-
 echo "*************************************************"
-
 tend=\$(date +%s)
 echo "###### end time: "\`date\`
-
 DIFF=\$(( \$tend - \$tstart ))
 echo "It took \$DIFF seconds"
-
 EOM
 
 echo -e "\tsub file: ${file}\n";
