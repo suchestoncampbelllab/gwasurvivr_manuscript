@@ -118,3 +118,5 @@ for(n in c(100, 1000, 5000)){
         select(ID_1, ID_2, missing, sex, event, time, age, DrugTxYes) %>% 
         write.table(paste0("/data/input/impute/sv_samples/n", n, "_chr18.impute.sample_sv"),
                     sep=" ", row.names = FALSE, quote = FALSE)
+}
+
