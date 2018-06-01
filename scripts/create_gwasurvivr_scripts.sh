@@ -28,7 +28,7 @@ cat <<EOM > ${file}
 #SBATCH --time=${walltime}
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
-#SBATCH --mem-per-cpu=${mem}
+#SBATCH --mem=${mem}
 #SBATCH --mail-user=user.name@university.edu
 #SBATCH --mail-type=FAIL
 #SBATCH --partition=general-compute
