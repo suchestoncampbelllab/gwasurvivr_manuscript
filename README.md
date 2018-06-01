@@ -39,12 +39,12 @@ Repo Structure
 
 
 **`data`** : Simulated data used for software benchmarking and supplemental material.
-- `data/input/impute`: Example data sets
+- `/data/input/impute`: Example data sets
 
     - `/data/input/impute/covariates`: Time event and covariate example data
     - `/data/input/impute/genotype`: Genotype data used for comparisons, **should be unzipped before analysis**. The file name `n#_p#_chr18.impute.gz` gives the number of samples (`n`) and SNPs (`p`).
     - `/data/input/impute/gt_samples`: GWASTools sample files
-    - `/data/input/impute/gt_gdsfiles`: GWASTools GDS files    
+    - `/data/input/impute/gt_gdsfiles`: default is an empty directory for GWASTools GDS files to save into if code run    
     - `/data/input/impute/sample`: Example sample files listing the sample IDs
     - `/data/input/impute/sample_ids`: Example sample ID lists, used to subset datasets.
     - `/data/input/impute/sv_samples`: Example sample files as required by `SurvivalGWAS_SV`.
