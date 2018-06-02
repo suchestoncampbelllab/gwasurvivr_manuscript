@@ -1,6 +1,6 @@
-# survivalFun.R
+# coxph_model.R
 library(survival)
-survivalFun <- function(SNP,
+coxph_model <- function(SNP,
                         pheno.file,
                         time.to.event,
                         event,
