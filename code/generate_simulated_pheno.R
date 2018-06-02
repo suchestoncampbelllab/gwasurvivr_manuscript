@@ -104,7 +104,7 @@ for(n in c(100, 1000, 5000)){
                              event="B", 
                              time="P", 
                              age="C",
-                             bmiOVWT="D",
+                             DrugTxYes="D",
                              stringsAsFactors = FALSE), .) %>%
         write.table(paste0("/data/input/impute/gt_samples/n", n, "_chr18.impute.sample_gt"),
                     sep=" ", row.names = FALSE, quote = FALSE)
