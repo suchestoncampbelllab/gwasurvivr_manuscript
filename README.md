@@ -11,10 +11,10 @@ The package can be found on Bioconductor: https://www.bioconductor.org/packages/
 
 The package repository can be found at https://github.com/suchestoncampbelllab/gwasurvivr
 
-To download code and simulated data in order to reproduce the results please clone this repository.
+To download code and simulated data in order to reproduce the results please clone this repository. [GitHub Large File Storage](https://git-lfs.github.com/) is needed to clone the genotype data. Please install before cloning the repository.
 
 ```
-git clone https://github.com/suchestoncampbelllab/gwasurvivr_manuscript.git
+git lfs clone https://github.com/suchestoncampbelllab/gwasurvivr_manuscript.git
 ```
 
 Abstract
