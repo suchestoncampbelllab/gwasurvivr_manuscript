@@ -1,0 +1,69 @@
+###### start time:Sat Sep 15 07:34:18 EDT 2018
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+All Done!
+*************************************************
+SLURM_JOB_ID=9653359
+SLURM_JOB_NODELIST=cpn-k16-12-01
+SLURM_NNODES=1
+SLURM_NTASKS=8
+SLURMTMPDIR=/scratch/9653359
+working directory=/projects/rpci/lsuchest/abbasriz/survivr_benchmark/scripts/genipe_impute
+*************************************************
+###### end time: Sat Sep 15 07:35:14 EDT 2018
+It took 56 seconds

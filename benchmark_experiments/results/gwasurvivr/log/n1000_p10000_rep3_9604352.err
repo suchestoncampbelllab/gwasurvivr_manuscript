@@ -1,0 +1,25 @@
+Read 1000 items
+Covariates included in the models are: age, DrugTxYes, sex
+1000 samples are included in the analysis
+Analysis started on 2018-09-02 at 23:05:22
+Determining number of SNPs and samples...
+Including all SNPs.
+scan.df not given. Assigning scanIDs automatically.
+Reading sample file...
+Reading genotype file...
+Block 1 of 2
+Block 2 of 2
+Writing annotation...
+Compressing...
+***** Compression time ******
+User:39.658
+System: 1.684
+Elapsed: 41.729
+*****************************
+Analyzing part 1/1...
+269 SNPs were removed from the analysis for not meeting
+the given threshold criteria or for having MAF = 0
+List of removed SNPs are saved to /projects/rpci/lsuchest/abbasriz/survivr_benchmark/output/gwasurvivr/results/n1000_p10000_rep3.gwasurvivr.snps_removed
+In total 9731 SNPs were included in the analysis
+The Cox model results output was saved to /projects/rpci/lsuchest/abbasriz/survivr_benchmark/output/gwasurvivr/results/n1000_p10000_rep3.gwasurvivr.coxph
+Analysis completed on 2018-09-02 at 23:06:30

@@ -1,0 +1,16 @@
+###### start time:Sat Sep 15 08:15:18 EDT 2018
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+Warning: column(s) ['_GenoD'] have very low variance. This may harm convergence.
+All Done!
+*************************************************
+SLURM_JOB_ID=9653393
+SLURM_JOB_NODELIST=cpn-d07-35-02
+SLURM_NNODES=1
+SLURM_NTASKS=8
+SLURMTMPDIR=/scratch/9653393
+working directory=/projects/rpci/lsuchest/abbasriz/survivr_benchmark/scripts/genipe_impute
+*************************************************
+###### end time: Sat Sep 15 08:17:33 EDT 2018
+It took 135 seconds

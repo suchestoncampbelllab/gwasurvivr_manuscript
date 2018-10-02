@@ -1,0 +1,12 @@
+###### start time:Tue Sep 4 00:00:01 EDT 2018
+All Done!
+*************************************************
+SLURM_JOB_ID=9609111
+SLURM_JOB_NODELIST=cpn-k16-15-02
+SLURM_NNODES=1
+SLURM_NTASKS=8
+SLURMTMPDIR=/scratch/9609111
+working directory=/projects/rpci/lsuchest/abbasriz/survivr_benchmark/scripts/genipe_impute
+*************************************************
+###### end time: Tue Sep 4 02:58:23 EDT 2018
+It took 10702 seconds

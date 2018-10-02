@@ -1,0 +1,68 @@
+ Activate the py34-genipe enviroment 
+ source activate py34-genipe 
+[2018-09-15 07:34:58 INFO] Logging everything into '/projects/rpci/lsuchest/abbasriz/survivr_benchmark/output/genipe/results2/n100_p1000_rep1.genipe.log'
+[2018-09-15 07:34:58 INFO] Program arguments: cox --impute2 /projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/genotype/n100_p1000_chr18.impute --sample /projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/sample/n100.impute_sample --pheno /projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/covariates/n100_cov.phenotype --out /projects/rpci/lsuchest/abbasriz/survivr_benchmark/output/genipe/results2/n100_p1000_rep1.genipe --nb-process 8 --nb-lines 1000 --prob 0 --maf 0 --gender-column sex --covar age,DrugTxYes,sex --sample-column ID_2 --time-to-event time --event event
+[2018-09-15 07:34:58 INFO] Reading phenotype file
+[2018-09-15 07:34:58 INFO]   - 52 males / 0 females (48 unknown)
+[2018-09-15 07:34:58 INFO]   - 52 samples with phenotype
+[2018-09-15 07:34:58 INFO] Reading the sample file
+[2018-09-15 07:34:58 INFO]   - 100 samples with imputation data
+[2018-09-15 07:35:00 WARNING] 18-45118: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:00 WARNING] rs7235937: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:00 WARNING] 18-45173: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:00 WARNING] 18-45196: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:01 WARNING] 18-4263: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:02 WARNING] 18-44351: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:02 WARNING] 18-39966: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:02 WARNING] 18-39990: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:02 WARNING] 18-40026: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:02 WARNING] 18-40036: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:02 WARNING] rs7241374: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:03 WARNING] 18-67562: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:03 WARNING] 18-60179: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:03 WARNING] 18-60180: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:03 WARNING] 18-45005: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:04 WARNING] 18-47581: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:04 WARNING] 18-56910: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:04 WARNING] 18-24586: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:04 WARNING] 18-59026: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:04 WARNING] 18-59048: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:04 WARNING] 18-59178: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:05 WARNING] 18-63734: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:05 WARNING] 18-63845: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:05 WARNING] 18-90774: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:06 WARNING] 18-59610: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:06 WARNING] 18-97259: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:06 WARNING] 18-59839: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:06 WARNING] 18-99083: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:06 WARNING] 18-95805: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:06 WARNING] 18-97372: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:07 WARNING] 18-102455: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:07 WARNING] 18-96271: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:07 WARNING] rs36168778: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:07 WARNING] rs57372391: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:07 WARNING] rs10445456: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:07 WARNING] 18-101158: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:08 WARNING] rs62076699: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:08 WARNING] 18-100000: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:08 WARNING] 18-100034: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:08 WARNING] 18-100049: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:08 WARNING] rs2847086: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:08 WARNING] rs62077562: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:09 WARNING] 18-100235: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:09 WARNING] 18-96828: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:09 WARNING] 18-96854: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:09 WARNING] 18-96984: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:09 WARNING] 18-99037: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:10 WARNING] 18-145280: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:11 WARNING] rs1784832: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:11 WARNING] rs499571: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:11 WARNING] rs495284: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:12 WARNING] rs657138: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:12 WARNING] 18-244958: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:12 WARNING] 18-217739: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:12 WARNING] 18-187753: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:13 WARNING] rs526402: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:13 WARNING] 18-256539: numpy LinAlgError: Singular matrix
+[2018-09-15 07:35:13 INFO] Processed 1,000 lines
+[2018-09-15 07:35:13 INFO] Analysis completed

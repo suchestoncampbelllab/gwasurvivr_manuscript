@@ -1,0 +1,100 @@
+###### start time:Sat Sep 1 20:53:50 EDT 2018
+> library(GWASTools)
+> library(batch)
+> 
+> parseCommandArgs(evaluate=TRUE)
+$chunk.impute
+[1] "/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/genotype/n100_p1000_chr18.impute"
+
+$chunk.sample
+[1] "/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/gt_samples/n100.sample_gt"
+
+$chr
+[1] 18
+
+$gds.output
+[1] "/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/gt_gdsfiles/n100_p1000_rep3_chr18"
+
+$gdsfile
+[1] "/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/gt_gdsfiles/n100_p1000_rep3_chr18.gds"
+
+$scanfile
+[1] "/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/gt_gdsfiles/n100_p1000_rep3_chr18.scan.rdata"
+
+$snpfile
+[1] "/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/gt_gdsfiles/n100_p1000_rep3_chr18.snp.rdata"
+
+$snpstart
+[1] 1
+
+$snpstop
+[1] 1000
+
+$gwastools.result
+[1] "/projects/rpci/lsuchest/abbasriz/survivr_benchmark/output/gwastools/results/n100_p1000_rep3.gwastools"
+
+> 
+> GT_surv <- function(chunk.impute, chunk.sample, chr, gds.output, gdsfile, scanfile, snpfile, snpstart, snpstop, gwastools.result){
++         convertImputeGds <- function(chunk.impute, chunk.sample, chr, gds.output){
++                 gds <- paste0(gds.output, ".gds")
++                 snp <- paste0(gds.output, ".snp.rdata")
++                 scan <- paste0(gds.output, ".scan.rdata")
++                 imputedDosageFile(input.files=c(chunk.impute, chunk.sample),
++                                   filename=gds,
++                                   chromosome=as.numeric(chr),
++                                   input.type="IMPUTE2",
++                                   input.dosage=FALSE,
++                                   file.type="gds",
++                                   snp.annot.filename = snp,
++                                   scan.annot.filename = scan)
++                 }        
++         
++         convertImputeGds(chunk.impute, chunk.sample, chr, gds.output)
++         
++         
++         
++         gds <- GdsGenotypeReader(gdsfile, genotypeDim="scan,snp")
++         snpAnnot <- getobj(snpfile)
++         # read scan
++         scanAnnot <- getobj(scanfile)
++         # put into GenotypeData coding 
++         genoData <- GenotypeData(gds,
++                                  snpAnnot=snpAnnot,
++                                  scanAnnot=scanAnnot)
++         
++         res <- assocCoxPH(genoData,
++                           event="event",
++                           time.to.event="time",
++                           covar=c("sex.sample", "age", "DrugTxYes"),
++                           snpStart=snpstart, 
++                           snpEnd=snpstop)
++         
++         res$snpID <- genoData@snpAnnot@data$rsID[res$snpID]
++         
++         write.table(na.omit(res),
++                     file = gwastools.result,
++                     sep=" ",
++                     quote=FALSE,
++                     row.names=FALSE,
++                     col.names=TRUE)  
++ }
+> 
+> GT_surv(chunk.impute, chunk.sample, as.numeric(chr), gds.output, gdsfile, scanfile, snpfile, snpstart, snpstop, gwastools.result)
+Clean up the fragments of GDS file:
+    open the file '/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/gt_gdsfiles/n100_p1000_rep3_chr18.gds' (395.7K)
+    # of fragments: 30
+    save to '/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/gt_gdsfiles/n100_p1000_rep3_chr18.gds.tmp'
+    rename '/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/gt_gdsfiles/n100_p1000_rep3_chr18.gds.tmp' (12.7K, reduced: 383.0K)
+    # of fragments: 14
+> 
+> 
+All Done!
+*************************************************
+SLURM_JOB_ID=9600315
+SLURM_JOB_NODELIST=cpn-f16-26
+SLURM_NNODES=1
+SLURMTMPDIR=/scratch/9600315
+working directory=/projects/rpci/lsuchest/abbasriz/survivr_benchmark/scripts/gwastools_impute
+*************************************************
+###### end time: Sat Sep 1 20:54:08 EDT 2018
+It took 18 seconds

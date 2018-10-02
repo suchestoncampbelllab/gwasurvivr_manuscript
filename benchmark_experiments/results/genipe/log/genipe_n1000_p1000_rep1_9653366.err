@@ -1,0 +1,17 @@
+ Activate the py34-genipe enviroment 
+ source activate py34-genipe 
+[2018-09-15 07:39:37 INFO] Logging everything into '/projects/rpci/lsuchest/abbasriz/survivr_benchmark/output/genipe/results2/n1000_p1000_rep1.genipe.log'
+[2018-09-15 07:39:37 INFO] Program arguments: cox --impute2 /projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/genotype/n1000_p1000_chr18.impute --sample /projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/sample/n1000.impute_sample --pheno /projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/covariates/n1000_cov.phenotype --out /projects/rpci/lsuchest/abbasriz/survivr_benchmark/output/genipe/results2/n1000_p1000_rep1.genipe --nb-process 8 --nb-lines 1000 --prob 0 --maf 0 --gender-column sex --covar age,DrugTxYes,sex --sample-column ID_2 --time-to-event time --event event
+[2018-09-15 07:39:37 INFO] Reading phenotype file
+[2018-09-15 07:39:37 INFO]   - 399 males / 0 females (601 unknown)
+[2018-09-15 07:39:37 INFO]   - 399 samples with phenotype
+[2018-09-15 07:39:37 INFO] Reading the sample file
+[2018-09-15 07:39:37 INFO]   - 1,000 samples with imputation data
+[2018-09-15 07:40:00 WARNING] rs2847086: numpy LinAlgError: Singular matrix
+[2018-09-15 07:40:06 WARNING] rs657138: numpy LinAlgError: Singular matrix
+[2018-09-15 07:40:07 WARNING] rs1784832: numpy LinAlgError: Singular matrix
+[2018-09-15 07:40:10 WARNING] rs495284: numpy LinAlgError: Singular matrix
+[2018-09-15 07:40:11 WARNING] rs526402: numpy LinAlgError: Singular matrix
+[2018-09-15 07:40:11 WARNING] 18-187753: numpy LinAlgError: Singular matrix
+[2018-09-15 07:40:12 INFO] Processed 1,000 lines
+[2018-09-15 07:40:12 INFO] Analysis completed
