@@ -1,0 +1,109 @@
+###### start time:Thu Aug 30 21:01:03 EDT 2018
+> library(GWASTools)
+> library(batch)
+> 
+> parseCommandArgs(evaluate=TRUE)
+$chunk.impute
+[1] "/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/genotype/n5000_p100000_chr18.impute"
+
+$chunk.sample
+[1] "/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/gt_samples/n5000.covs.sample_gt"
+
+$chr
+[1] 18
+
+$gds.output
+[1] "/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/gt_gdsfiles/n5000_p100000_cov4_chr18"
+
+$gdsfile
+[1] "/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/gt_gdsfiles/n5000_p100000_cov4_chr18.gds"
+
+$scanfile
+[1] "/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/gt_gdsfiles/n5000_p100000_cov4_chr18.scan.rdata"
+
+$snpfile
+[1] "/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/gt_gdsfiles/n5000_p100000_cov4_chr18.snp.rdata"
+
+$snpstart
+[1] 1
+
+$snpstop
+[1] 1e+05
+
+$gwastools.result
+[1] "/projects/rpci/lsuchest/abbasriz/survivr_benchmark/revisions/cov_bm_results/cov4/gwastools/n5000_p100000_cov4.gwastools"
+
+$covariate
+[1] "cov4"
+
+> 
+> GT_surv <- function(chunk.impute, chunk.sample, chr, gds.output, gdsfile, scanfile, snpfile, snpstart, snpstop, gwastools.result, covariate){
++     
++     if(covariate=="cov4"){
++         covariates <- c("age", "sex.sample", "DrugTxYes", "pc1")
++     } else if(covariate=="cov8"){
++         covariates <- c("age", "sex.sample", "DrugTxYes", "pc1", "pc2", "pc3", "pc4", "pc5")
++     } else if(covariate=="cov12"){
++         covariates <- c("age", "sex.sample", "DrugTxYes", "pc1", "pc2", "pc3", "pc4", "pc5", "pc6", "pc7", "pc8", "pc9")
++     }
++     
++     convertImputeGds <- function(chunk.impute, chunk.sample, chr, gds.output){
++         gds <- paste0(gds.output, ".gds")
++         snp <- paste0(gds.output, ".snp.rdata")
++         scan <- paste0(gds.output, ".scan.rdata")
++         imputedDosageFile(input.files=c(chunk.impute, chunk.sample),
++                           filename=gds,
++                           chromosome=as.numeric(chr),
++                           input.type="IMPUTE2",
++                           input.dosage=FALSE,
++                           file.type="gds",
++                           snp.annot.filename = snp,
++                           scan.annot.filename = scan)
++     }
++     
++     convertImputeGds(chunk.impute, chunk.sample, chr, gds.output)
++     
++     gds <- GdsGenotypeReader(gdsfile, genotypeDim="scan,snp")
++     snpAnnot <- getobj(snpfile)
++     # read scan
++     scanAnnot <- getobj(scanfile)
++     # put into GenotypeData coding
++     genoData <- GenotypeData(gds,
++                              snpAnnot=snpAnnot,
++                              scanAnnot=scanAnnot)
++     
++     res <- assocCoxPH(genoData,
++                       event="event",
++                       time.to.event="time",
++                       covar=covariates,
++                       snpStart=snpstart,
++                       snpEnd=snpstop)
++     
++     res$snpID <- genoData@snpAnnot@data$rsID[res$snpID]
++     
++     write.table(na.omit(res),
++                 file = gwastools.result,
++                 sep=" ",
++                 quote=FALSE,
++                 row.names=FALSE,
++                 col.names=TRUE)
++ }
+> 
+> GT_surv(chunk.impute, chunk.sample, as.numeric(chr), gds.output, gdsfile, scanfile, snpfile, snpstart, snpstop, gwastools.result, covariate)
+Clean up the fragments of GDS file:
+    open the file '/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/gt_gdsfiles/n5000_p100000_cov4_chr18.gds' (1.9G)
+    # of fragments: 30
+    save to '/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/gt_gdsfiles/n5000_p100000_cov4_chr18.gds.tmp'
+    rename '/projects/rpci/lsuchest/abbasriz/survivr_benchmark/input/impute/gt_gdsfiles/n5000_p100000_cov4_chr18.gds.tmp' (30.5M, reduced: 1.8G)
+    # of fragments: 14
+> 
+All Done!
+*************************************************
+SLURM_JOB_ID=9590885
+SLURM_JOB_NODELIST=cpn-k10-24-02
+SLURM_NNODES=1
+SLURMTMPDIR=/scratch/9590885
+working directory=/projects/rpci/lsuchest/abbasriz/survivr_benchmark/revisions/cov_bm_results/scripts
+*************************************************
+###### end time: Thu Aug 30 22:24:04 EDT 2018
+It took 4981 seconds

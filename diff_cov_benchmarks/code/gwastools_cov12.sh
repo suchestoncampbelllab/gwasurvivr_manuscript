@@ -1,0 +1,56 @@
+#!/bin/bash
+#SBATCH --time=24:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=8
+#SBATCH --mem=24000
+#SBATCH --mail-user=user.name@university.edu
+#SBATCH --mail-type=FAIL
+#SBATCH --partition=general-compute --qos=general-compute
+#SBATCH --job-name=gwastools_n5000_p100000_cov12
+#SBATCH --output=/gwasurvivr_manuscript/diff_cov_benchmarks/results/gwastools/log/n5000_p100000_cov12_%j.out
+#SBATCH --error=/gwasurvivr_manuscript/diff_cov_benchmarks/results/gwastools/log/n5000_p100000_cov12_%j.err
+
+#Get date and time
+tstart=$(date +%s)
+echo "###### start time:"`date`
+
+DIRECTORY=/gwasurvivr_manuscript/benchmark_experiments/data
+SCRIPT=/gwasurvivr_manuscript/diff_cov_benchmarks/code
+
+############################
+module load R
+
+R --file=$SCRIPT/gwastools_covs_survival.R -q --args \
+	chunk.impute $DIRECTORY/input/impute/genotype/n5000_p100000_chr18.impute \
+	chunk.sample $DIRECTORY/input/impute/gt_samples/n5000.covs.sample_gt \
+	chr 18 \
+	gds.output $DIRECTORY/input/impute/gt_gdsfiles/n5000_p100000_cov12_chr18 \
+	gdsfile $DIRECTORY/input/impute/gt_gdsfiles/n5000_p100000_cov12_chr18.gds \
+	scanfile $DIRECTORY/input/impute/gt_gdsfiles/n5000_p100000_cov12_chr18.scan.rdata \
+	snpfile $DIRECTORY/input/impute/gt_gdsfiles/n5000_p100000_cov12_chr18.snp.rdata \
+	snpstart 1 \
+	snpstop 100000 \
+	gwastools.result /gwasurvivr_manuscript/diff_cov_benchmarks/results/gwastools/n5000_p100000_cov12.gwastools \
+	covariate cov12
+
+##########################
+
+echo "All Done!"
+
+echo "*************************************************"
+
+echo "SLURM_JOB_ID"=$SLURM_JOB_ID
+echo "SLURM_JOB_NODELIST"=$SLURM_JOB_NODELIST
+echo "SLURM_NNODES"=$SLURM_NNODES
+echo "SLURMTMPDIR"=$SLURMTMPDIR
+echo "working directory"=$SLURM_SUBMIT_DIR
+
+echo "*************************************************"
+
+tend=$(date +%s)
+echo "###### end time: "`date`
+
+DIFF=$(( $tend - $tstart ))
+echo "It took $DIFF seconds"
+
+exit
