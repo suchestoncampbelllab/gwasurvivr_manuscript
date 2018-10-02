@@ -1,14 +1,14 @@
 # supplementary figure 1
-# source("/code/gcoxph_model.R")
-# source("/code/coxph_model.R")
+# source("/gwasurvivr_manuscript/supplemental_data/code/gcoxph_model.R")
+# source("/gwasurvivr_manuscript/supplemental_data/code/coxph_model.R")
 
 # load library
 library(gwasurvivr)
 # load phenotype data
-pheno.file <- readRDS("~/Google Drive/OSU_PHD/gwasurvivr_manuscript/data/supplemental_data/simulated_pheno.rds")
+pheno.file <- readRDS("/gwasurvivr_manuscript/supplemental_data/simulated_pheno.rds")
 sample.ids <- pheno.file$ID_2
 # load genotype data
-genotypes <- readRDS("~/Google Drive/OSU_PHD/gwasurvivr_manuscript/data/supplemental_data/sanger.genotypes.rds")
+genotypes <- readRDS("/gwasurvivr_manuscript/supplemental_data/sanger.genotypes.rds")
 
 library(microbenchmark)
 library(survival)
