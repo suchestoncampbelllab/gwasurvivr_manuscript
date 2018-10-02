@@ -1,0 +1,58 @@
+Read 3000 items
+Covariates included in the models are: age, DrugTxYes, sex
+3000 samples are included in the analysis
+Analysis started on 2018-08-24 at 03:31:08
+Determining number of SNPs and samples...
+Including all SNPs.
+scan.df not given. Assigning scanIDs automatically.
+Reading sample file...
+Reading genotype file...
+Block 1 of 24
+Block 2 of 24
+Block 3 of 24
+Block 4 of 24
+Block 5 of 24
+Block 6 of 24
+Block 7 of 24
+Block 8 of 24
+Block 9 of 24
+Block 10 of 24
+Block 11 of 24
+Block 12 of 24
+Block 13 of 24
+Block 14 of 24
+Block 15 of 24
+Block 16 of 24
+Block 17 of 24
+Block 18 of 24
+Block 19 of 24
+Block 20 of 24
+Block 21 of 24
+Block 22 of 24
+Block 23 of 24
+Block 24 of 24
+Writing annotation...
+Compressing...
+***** Compression time ******
+User:3704.366
+System: 79.633
+Elapsed: 3786.548
+*****************************
+Analyzing part 1/12...
+Analyzing part 2/12...
+Analyzing part 3/12...
+Analyzing part 4/12...
+Analyzing part 5/12...
+Analyzing part 6/12...
+Analyzing part 7/12...
+Analyzing part 8/12...
+Analyzing part 9/12...
+Analyzing part 10/12...
+Analyzing part 11/12...
+Analyzing part 12/12...
+28468 SNPs were removed from the analysis for not meeting
+the given threshold criteria or for having MAF = 0
+List of removed SNPs are saved to /projects/rpci/lsuchest/ezgi/gwasurvivr_sims/results/n3000_chr22.res.snps_removed
+In total 90849 SNPs were included in the analysis
+The Cox model results output was saved to /projects/rpci/lsuchest/ezgi/gwasurvivr_sims/results/n3000_chr22.res.coxph
+Analysis completed on 2018-08-24 at 04:41:08

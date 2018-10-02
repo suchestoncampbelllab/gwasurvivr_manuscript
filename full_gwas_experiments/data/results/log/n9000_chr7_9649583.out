@@ -1,0 +1,75 @@
+###### start time:Fri Sep 14 07:07:07 EDT 2018
+> library(batch)
+> library(gwasurvivr)
+> 
+> parseCommandArgs(evaluate=TRUE)
+$impute.file
+[1] "/projects/rpci/lsuchest/ezgi/gwasurvivr_sims/genetic_data/n9K.chr7.gen.gz"
+
+$chr
+[1] 7
+
+$sample.ids
+[1] "/projects/rpci/lsuchest/ezgi/gwasurvivr_sims/sample_ids/n9000_sample_ids.txt"
+
+$out.file
+[1] "/projects/rpci/lsuchest/ezgi/gwasurvivr_sims/results/n9000_chr7.res"
+
+$ncores
+[1] 8
+
+> 
+> options("gwasurvivr.cores"=as.numeric(ncores))
+> 
+> 
+> runCoxSurv <- function(impute.file, chr, sample.ids, out.file){
++     covariate.file <- "/projects/rpci/lsuchest/ezgi/gwasurvivr_sims/covariate_file/sim_pheno_N9K.txt"
++     covariate.file <- read.table(covariate.file,
++                                  header=TRUE,
++                                  sep="\t", 
++                                  stringsAsFactors=FALSE)
++     sample.ids <- scan(sample.ids, what=character())
++     sample.file <- "/projects/rpci/lsuchest/ezgi/gwasurvivr_sims/sample_files/simulated.sample"
++     impute2CoxSurv(impute.file=impute.file,
++                    sample.file=sample.file,
++                    chr=as.numeric(chr),
++                    covariate.file=covariate.file,
++                    id.column="IDs",
++                    sample.ids=sample.ids,
++                    time.to.event="time",
++                    event="event",
++                    covariates=c("age", "DrugTxYes", "sex"),
++                    inter.term=NULL,
++                    print.covs="only",
++                    out.file=out.file,
++                    chunk.size=10000,
++                    maf.filter=0.05,
++                    flip.dosage=TRUE,
++                    verbose=TRUE,
++                    clusterObj=NULL,
++ 		   keepGDS = FALSE)
++ }
+> 
+> runCoxSurv(impute.file,
++            chr,
++            sample.ids,
++            out.file)
+Clean up the fragments of GDS file:
+    open the file '/scratch/9649583/RtmpoFYZQu/3f8762f06b8a.gds' (16.9G)
+    # of fragments: 30
+    save to '/scratch/9649583/RtmpoFYZQu/3f8762f06b8a.gds.tmp'
+    rename '/scratch/9649583/RtmpoFYZQu/3f8762f06b8a.gds.tmp' (241.7M, reduced: 16.6G)
+    # of fragments: 14
+> 
+> 
+All Done!
+*************************************************
+SLURM_JOB_ID=9649583
+SLURM_JOB_NODELIST=cpn-k16-30-02
+SLURM_NNODES=1
+SLURM_NTASKS=8
+SLURMTMPDIR=/scratch/9649583
+working directory=/projects/rpci/lsuchest/ezgi/gwasurvivr_sims/scripts
+*************************************************
+###### end time: Fri Sep 14 13:30:19 EDT 2018
+It took 22992 seconds

@@ -1,0 +1,62 @@
+Read 3000 items
+Covariates included in the models are: age, DrugTxYes, sex
+3000 samples are included in the analysis
+Analysis started on 2018-08-24 at 00:51:53
+Determining number of SNPs and samples...
+Including all SNPs.
+scan.df not given. Assigning scanIDs automatically.
+Reading sample file...
+Reading genotype file...
+Block 1 of 23
+Block 2 of 23
+Block 3 of 23
+Block 4 of 23
+Block 5 of 23
+Block 6 of 23
+Block 7 of 23
+Block 8 of 23
+Block 9 of 23
+Block 10 of 23
+Block 11 of 23
+Block 12 of 23
+Block 13 of 23
+Block 14 of 23
+Block 15 of 23
+Block 16 of 23
+Block 17 of 23
+Block 18 of 23
+Block 19 of 23
+Block 20 of 23
+Block 21 of 23
+Block 22 of 23
+Block 23 of 23
+Writing annotation...
+Compressing...
+***** Compression time ******
+User:3531.747
+System: 77.086
+Elapsed: 3610.721
+*****************************
+Analyzing part 1/12...
+Analyzing part 2/12...
+Analyzing part 3/12...
+Analyzing part 4/12...
+Analyzing part 5/12...
+Analyzing part 6/12...
+Analyzing part 7/12...
+Analyzing part 8/12...
+Analyzing part 9/12...
+Analyzing part 10/12...
+Analyzing part 11/12...
+Analyzing part 12/12...
+27134 SNPs were removed from the analysis for not meeting
+the given threshold criteria or for having MAF = 0
+List of removed SNPs are saved to /projects/rpci/lsuchest/ezgi/gwasurvivr_sims/results/n3000_chr11.res.snps_removed
+In total 87393 SNPs were included in the analysis
+The Cox model results output was saved to /projects/rpci/lsuchest/ezgi/gwasurvivr_sims/results/n3000_chr11.res.coxph
+Analysis completed on 2018-08-24 at 01:58:25
+Warning messages:
+1: In matrix(ss, ncol = col.cnt, byrow = TRUE) :
+  data length [122227748] is not a sub-multiple or multiple of the number of rows [4527]
+2: In mde(x) : NAs introduced by coercion
+3: In mde(x) : NAs introduced by coercion
