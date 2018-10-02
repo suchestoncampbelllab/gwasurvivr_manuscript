@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /hapgen2/
+cd /gwasurvivr_manuscript/hapgen2/
 
 # Command line input is:
 ./hapgen2 -h ./CEU.0908.impute.files/CEU.0908.chr18.hap \
@@ -27,7 +27,7 @@ cd /hapgen2/
     -dl 97591 1 1.5 2.5 305138 0 3 4.5 328132 1 2.0 6.5 \
     -n 800 4200
 
-cd /hapgen2/simulated_data/
+cd /gwasurvivr_manuscript/hapgen2/simulated_data/
 cut -d ' ' -f1-5 --complement n100.cases.gen > n100.cases.gen_slice 
 paste n100.controls.gen n100.cases.gen_slice > n100.gen
 
@@ -37,7 +37,7 @@ paste n1000.controls.gen n1000.cases.gen_slice > n1000.gen
 cut -d ' ' -f1-5 --complement n5000.cases.gen  > n5000.cases.gen_slice
 paste -d ' ' n5000.controls.gen n5000.cases.gen_slice > n5000.gen
 
-dir=/data/input/impute/genotypes
+dir=/gwasurvivr_manuscript/benchmark_experiments/data/input/impute/genotypes
 for n in 100 1000 5000;
 do
 	for p in 1000 10000 100000;
