@@ -1,5 +1,5 @@
-dir="/projects/rpci/lsuchest/ezgi/gwasurvivr_sims";
-output_dir="/projects/rpci/lsuchest/ezgi/gwasurvivr_sims/results";
+dir="/gwasurvivr_manuscript/full_gwas_experiments/code";
+output_dir="/gwasurvivr_manuscript/full_gwas_experiments/results";
 
 for j in 3000 6000 9000;
 do
@@ -14,7 +14,7 @@ cat <<EOM > ${file}
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
 #SBATCH --mem=24000
-#SBATCH --mail-user=rizvi.33@osu.edu
+#SBATCH --mail-user=user.name@university.eduu
 #SBATCH --mail-type=FAIL
 #SBATCH --partition=general-compute --qos general-compute
 #SBATCH --job-name=n${j}_chr${k}
@@ -25,8 +25,8 @@ tstart=\$(date +%s)
 echo "###### start time:"\`date\`
 #####################
 
-DIRECTORY=/projects/rpci/lsuchest/ezgi/gwasurvivr_sims
-SCRIPT=/projects/rpci/lsuchest/ezgi/gwasurvivr_sims/scripts
+DIRECTORY=/gwasurvivr_manuscript/full_gwas_experiments/data
+SCRIPT=/gwasurvivr_manuscript/full_gwas_experiments/code
 
 module load R
 
