@@ -3,7 +3,7 @@ library(batch)
 
 parseCommandArgs(evaluate=TRUE)
 
-options("gwasurvivr.cores"=8L)
+options("gwasurvivr.cores"=12L)
 
 ###############################################################################
 ###### imputeCoxSurv ########################################################
