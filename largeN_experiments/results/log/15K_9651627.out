@@ -1,0 +1,61 @@
+###### start time:1537033699
+> library(gwasurvivr)
+> library(batch)
+> 
+> parseCommandArgs(evaluate=TRUE)
+$impute.file
+[1] "/projects/rpci/lsuchest/ezgi/gwasurvivr_sims/compress_bigNs/genetic_data/N_15K.gen.gz"
+
+$sample.file
+[1] "/projects/rpci/lsuchest/ezgi/gwasurvivr_sims/run_bigNs/sample_files/N_15K.sample"
+
+$covariate.file
+[1] "/projects/rpci/lsuchest/ezgi/gwasurvivr_sims/run_bigNs/pheno_files/N15K_pheno.txt"
+
+$out.file
+[1] "/projects/rpci/lsuchest/ezgi/gwasurvivr_sims/run_bigNs/result_files/N15K"
+
+> 
+> options("gwasurvivr.cores"=12L)
+> 
+> ###############################################################################
+> ###### imputeCoxSurv ########################################################
+> 
+> covariate.file <- read.table(covariate.file, sep="\t", header=TRUE, stringsAsFactors = FALSE)
+> 
+> 
+> impute2CoxSurv(impute.file=impute.file,
++                sample.file=sample.file,
++                chr=22,
++                covariate.file=covariate.file,
++                id.column="ID_1",
++                sample.ids=NULL,
++                time.to.event="time",
++                event="event",
++                covariates=c("age", "sex", "DrugTxYes"),
++                inter.term=NULL,
++                print.covs="only",
++                out.file= out.file,
++                chunk.size=10000,
++                maf.filter=0.005,
++                flip.dosage=TRUE,
++                verbose=TRUE,
++                keepGDS=TRUE,
++                clusterObj=NULL)
+Clean up the fragments of GDS file:
+    open the file '/projects/rpci/lsuchest/ezgi/gwasurvivr_sims/compress_bigNs/genetic_data/N_15K.gen.gds' (6.7G)
+    # of fragments: 30
+    save to '/projects/rpci/lsuchest/ezgi/gwasurvivr_sims/compress_bigNs/genetic_data/N_15K.gen.gds.tmp'
+    rename '/projects/rpci/lsuchest/ezgi/gwasurvivr_sims/compress_bigNs/genetic_data/N_15K.gen.gds.tmp' (115.6M, reduced: 6.6G)
+    # of fragments: 14
+> 
+All Done!
+*************************************************
+SLURM_JOB_ID=9651627
+SLURM_JOB_NODELIST=cpn-f16-37
+SLURM_NNODES=1
+SLURMTMPDIR=/scratch/9651627
+working directory=/projects/rpci/lsuchest/ezgi/gwasurvivr_sims/run_bigNs/code
+*************************************************
+###### end time: Sat Sep 15 17:10:10 EDT 2018
+It took 12111 seconds
