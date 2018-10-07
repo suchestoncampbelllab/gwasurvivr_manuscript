@@ -1,21 +1,20 @@
+README
+================
 
 Introduction
 ============
 
-Code and data provided here are for reproducing data used to generate and create Figure 1 and Supplementary Figures 1-4 in  gwasurvivr: an R package for genome wide survival analysis manuscript.
+Code and data provided here are for reproducing data used to generate and create Figure 1 and Supplementary Figures 1-4 in gwasurvivr: an R package for genome wide survival analysis manuscript.
 
+The preprint is available on bioRxiv (<https://www.biorxiv.org/content/early/2018/05/18/326033>).
 
-The preprint is available on bioRxiv (https://www.biorxiv.org/content/early/2018/05/18/326033).
+The package can be found on Bioconductor: <https://www.bioconductor.org/packages/gwasurvivr>
 
-The package can be found on Bioconductor: https://www.bioconductor.org/packages/gwasurvivr
-
-The package repository can be found at https://github.com/suchestoncampbelllab/gwasurvivr
+The package repository can be found at <https://github.com/suchestoncampbelllab/gwasurvivr>
 
 To download code and simulated data in order to reproduce the results please clone this repository. [GitHub Large File Storage](https://git-lfs.github.com/) is needed to clone the genotype data. Please install before cloning the repository.
 
-```
-git lfs clone https://github.com/suchestoncampbelllab/gwasurvivr_manuscript.git
-```
+    git lfs clone https://github.com/suchestoncampbelllab/gwasurvivr_manuscript.git
 
 Abstract
 ========
@@ -25,32 +24,18 @@ To address the limited software options for performing survival analyses with mi
 Repo Structure
 ==============
 
-**`code`**: Scripts used for software comparisons and to generate figures used in the manuscript.
+Folders in the repository are categorized based on the perfomance tests of `gwasurvivr` and other GWAS software capable of conducting genome wide survival analysis (`genipe`, `SurvivalGWAS_SV`, and `GWASTools`). Each folder contains a `code`, `results` and `data` sub directories.
+Scripts used for software comparisons and to generate figures used in the manuscript are kept under `code`.
 
--   `/code/create_*_scripts.sh`: Scripts used to generate shell scripts that submit jobs on a computing cluster for each software.
--   `/code/diagnosticFigures.R`: R code to generate the diagnostic figures
--   `/code/gwastools_survival.R`: R function to benchmark `GWASTools`
--   `/code/run_gwasurvivr.R`: R function to benchmark `gwasurvivr`
--   `/code/timePlots.R`: R code to generate time comparison plots. 
--   `/code/generate_simulated_geno.sh`: Shell script to use HAPGENv2 and make simulated data using 1000G chr18
--   `/code/generate_simulated.pheno.R`: R script on how to generate simulated phenotype data
--   `/code/parse_times_from_results.pl`: perl script to grab times and compute node info from `log` files. this script is usually dropped into the log folder and then run interactively.
+-   **`benchmark_experiments`:** Experiments done to compare computational time among software for 100K SNPs, including 3 non-SNP covariates for 100, 1000 and 5000 sample sizes. Each analysis was done in triplicates to account for variability.
 
+-   **`diff_cov_benchmarks`:** Computational time across softwares were compared for different number of non-SNP covariates included in the model. Tests were done for 4, 8 and 12 number of covariates.
+-   **`figures`:** Figures included in the main paper and supplemental materials.
 
+-   **`full_gwas_experiments`:** Experiments to determine the computational time of `gwasurvivr::impute2CoxSurv()` function on simulated genome-wide data including all 22 chromosomes.
 
-**`data`** : Simulated data used for software benchmarking and supplemental material.
-- `/data/input/impute`: Example data sets
+-   **`hapgen2`**: Directory that has the 1000 Genomes CEU data for chromosome 18 and the simulated results. Please refer to `/gwasurvivr_manuscript/hapgen2/code/generate*` files for how simulated data was generated. The data is compressed and should be **unzipped** to fully replicate results without generating own data.
 
-    - `/data/input/impute/covariates`: Time event and covariate example data
-    - `/data/input/impute/genotype`: Genotype data used for comparisons, **should be unzipped before analysis**. The file name `n#_p#_chr18.impute.gz` gives the number of samples (`n`) and SNPs (`p`).
-    - `/data/input/impute/gt_samples`: GWASTools sample files
-    - `/data/input/impute/gt_gdsfiles`: default is an empty directory for GWASTools GDS files to save into if code run    
-    - `/data/input/impute/sample`: Example sample files listing the sample IDs
-    - `/data/input/impute/sample_ids`: Example sample ID lists, used to subset datasets.
-    - `/data/input/impute/sv_samples`: Example sample files as required by `SurvivalGWAS_SV`.
+-   **`largeN_experiments`:** Testing computing time of `gwasurvivr::impute2CoxSurv()` for sample sizes of 15K, 20K and 25K.
 
--   `/data/supplemental_data`: Genotype data used to compare survival with modified version implemented in gwasurvivr
-
-**`figures`**: Main paper and Supplemental figures.
-
-**`hapgen2`**: Directory that has the 1000 Genomes CEU data for chromosome 18 and the simulated results. Please refer to `/code/generate_simulated.geno.sh` for how simulated data was generated. The data is compressed and should be **unzipped** to fully replicate results without generating own data. 
+-   **`supplemental_data`:** Code for supplemental figures.
