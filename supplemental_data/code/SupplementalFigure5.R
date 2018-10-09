@@ -2,6 +2,8 @@ library(tidyverse)
 
 all_chr_gwas <- readRDS("full_gwas_experiments/results/all_chr_times.rds")
 
+plot_cols <- c("#21313E","#20726E","#67B675","#EFEE69")[4:1]
+
 all_chr_gwas %>%
     mutate(Atime = Total_Time-User_Time) %>%
     select(Ctime= User_Time,
